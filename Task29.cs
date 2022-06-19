@@ -40,7 +40,7 @@ void PrintArraySorted(int[] array)
     int count = array.Length;
     for (int i = 0; i < count; i++)
     {
-        Console.Write($"{Math.Abs(array[i])} ");
+        Console.Write($"{array[i]} ");
     }
 }
 

@@ -2,14 +2,49 @@
 // Задача 29: Напишите программу, которая задаёт массив из 8 случайных целых чисел
 // и выводит отсортированный по модулю массив.
 
-int[] mas = new int[8];
-Random r = new Random();
-int sum = 0;
+int[] array = new int[8];
+Random rand = new Random();
 
-for (int i = 0; i < mas.Length; i++)
+void PrintArrayRand(int[] array)
 {
-    mas[i] = r.Next(10);
-    Console.WriteLine(mas[i] + " ");
-    sum = sum + mas[i];
+    int count = array.Length;
+    for (int i = 0; i < count; i++)
+    {
+        array[i] = rand.Next(-10, 10);
+        Console.Write($"{array[i]} ");
+    }
 }
-Console.WriteLine($"Сумма: {sum}");
+
+PrintArrayRand(array);
+
+void SortArray(int[] array)
+{
+for (int i = 0; i < array.Length - 1; i++)
+{
+    int minPosition = i;
+    for (int j = i + 1; j < array.Length; j++)
+    {
+       if (Math.Abs(array[j]) < Math.Abs(array[minPosition]))
+       {
+        minPosition = j;
+       }
+    }
+    int temporary = array[i];
+    array[i] = array[minPosition];
+    array[minPosition] = temporary;
+}
+}
+
+void PrintArraySorted(int[] array)
+{
+    int count = array.Length;
+    for (int i = 0; i < count; i++)
+    {
+        Console.Write($"{Math.Abs(array[i])} ");
+    }
+}
+
+SortArray(array);
+Console.WriteLine();
+PrintArraySorted(array);
+
